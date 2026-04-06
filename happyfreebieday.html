@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Freebie Day — Free Birthday Stuff Near You</title>
+<meta name="description" content="Find the best birthday freebies near you. 30+ restaurants, stores, and chains giving away free stuff on your birthday. Search by zip code!">
+<meta property="og:title" content="Happy Freebie Day">
+<meta property="og:description" content="30+ places giving you free stuff on your birthday. Find freebies near you by zip code.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#D4537E;--blue-light:#FFF0F5;--blue-mid:#993556;--blue-dark:#2a0a14;
+  --bg:#ffffff;--surface:#FFFFFF;
+  --text:#2a0a14;--muted:#7a5060;
+  --border:#f0d0da;--border-strong:#e0a8bc;
+}
+body{font-family:'Figtree',sans-serif;background:#fff;color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+
+.hero{background:#fff;border-bottom:1.5px solid var(--border);padding:2.5rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.hero>*:not(.hero-canvas){position:relative;z-index:1}
+.hero-pill{display:inline-flex;align-items:center;gap:6px;background:white;border:1.5px solid var(--border);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--blue-mid);margin-bottom:1rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,5vw,3.4rem);font-weight:800;line-height:1.05;color:var(--blue-dark);margin-bottom:.5rem;white-space:nowrap}
+.hero h1 span{color:var(--blue)}
+.hero-sub{font-size:.95rem;color:var(--muted);line-height:1.6;margin-bottom:1.75rem;max-width:420px;margin-left:auto;margin-right:auto}
+.hero-stats{display:flex;gap:2rem;justify-content:center;margin-bottom:1.75rem}
+.stat-n{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--blue-dark);line-height:1}
+.stat-l{font-size:11px;color:var(--muted);margin-top:2px}
+.zip-wrap{max-width:400px;margin:0 auto}
+.zip-label{font-size:12px;font-weight:600;color:var(--muted);text-align:left;margin-bottom:6px;letter-spacing:.03em}
+.zip-row{display:flex;gap:8px}
+.zip-row input{flex:1;padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);font-size:14px;font-family:'Figtree',sans-serif;background:white;color:var(--text);transition:border-color .2s}
+.zip-row input:focus{outline:none;border-color:var(--blue)}
+.zip-row button{padding:11px 20px;border-radius:10px;border:none;background:var(--blue);color:white;font-size:14px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif}
+.zip-row button:hover{background:var(--blue-mid)}
+.zip-status{font-size:12px;color:var(--blue-mid);margin-top:6px;min-height:16px;text-align:left}
+
+.how-section{background:#FAFCFF;border-bottom:1.5px solid var(--border);padding:2rem 1.5rem}
+.how-section h2{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;text-align:center;color:var(--blue-dark);margin-bottom:1.25rem}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;max-width:700px;margin:0 auto}
+.how-step{text-align:center;padding:.75rem}
+.how-num{width:36px;height:36px;background:#FFF0F5;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#993556;margin:0 auto .6rem}
+.how-step h3{font-size:13px;font-weight:600;color:var(--blue-dark);margin-bottom:.3rem}
+.how-step p{font-size:12px;color:var(--muted);line-height:1.5}
+
+.cat-section{padding:1.25rem 1.5rem .5rem;max-width:960px;margin:0 auto}
+.cat-row{display:flex;flex-wrap:wrap;gap:7px}
+.cat-btn{padding:7px 15px;border-radius:8px;border:1.5px solid var(--border);background:white;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted);font-family:'Figtree',sans-serif;transition:all .15s}
+.cat-btn:hover{border-color:var(--blue);color:var(--blue)}
+.cat-btn.active{background:var(--blue-light);border-color:var(--blue);color:var(--blue-mid);font-weight:600}
+
+.grid-section{padding:.75rem 1.5rem 2rem;max-width:960px;margin:0 auto;background:#fff}
+.grid-count{font-size:12px;color:var(--muted);margin-bottom:.75rem;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.card{background:white;border:1.5px solid var(--border);border-radius:14px;padding:1rem;display:flex;flex-direction:column;gap:7px;transition:border-color .2s,transform .15s}
+.card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.card-emoji{font-size:22px;line-height:1}
+.card-scope{font-size:10px;padding:3px 8px;border-radius:6px;font-weight:600;white-space:nowrap}
+.scope-national{background:#FFF0F5;color:#993556}
+.scope-regional{background:#FFF3E0;color:#854F0B}
+.scope-local{background:#EEEDFE;color:#3C3489}
+.card-name{font-size:14px;font-weight:600;color:var(--blue-dark)}
+.card-what{font-size:12px;color:var(--muted);line-height:1.45}
+.card-tag{display:inline-block;font-size:10px;padding:3px 8px;border-radius:6px;font-weight:600;align-self:flex-start}
+.tag-food{background:#FFF3E0;color:#854F0B}
+.tag-retail{background:#E1F5EE;color:#085041}
+.tag-beauty{background:#FBEAF0;color:#993556}
+.tag-fun{background:#EEEDFE;color:#3C3489}
+.tag-drink{background:#FFF0F5;color:#993556}
+.card-how{font-size:11px;color:var(--muted);border-top:1.5px solid var(--border);padding-top:7px;line-height:1.45}
+.card-map-btn{display:inline-flex;align-items:center;gap:3px;font-size:11px;color:var(--blue);font-weight:600;text-decoration:none;cursor:pointer;background:none;border:none;padding:0;font-family:'Figtree',sans-serif}
+.card-map-btn:hover{text-decoration:underline}
+
+.email-section{background:#FFF5F8;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);padding:2.5rem 1.5rem;text-align:center}
+.email-section h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--blue-dark);margin-bottom:.4rem}
+.email-section p{color:var(--muted);font-size:.9rem;margin-bottom:1.25rem}
+.email-form{display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap}
+.email-form input{flex:1;min-width:200px;padding:11px 15px;border-radius:10px;border:1.5px solid var(--border-strong);font-size:14px;font-family:'Figtree',sans-serif;background:white;color:var(--text)}
+.email-form input:focus{outline:none;border-color:var(--blue)}
+.email-form button{padding:11px 22px;border-radius:10px;border:none;background:var(--blue);color:white;font-size:14px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif}
+.email-form button:hover{background:var(--blue-mid)}
+.email-success{display:none;color:var(--blue-mid);font-weight:600;margin-top:.75rem;font-size:14px}
+.email-fine{font-size:11px;color:var(--muted);margin-top:.5rem}
+
+.tracker-section{padding:2rem 1.5rem;max-width:960px;margin:0 auto}
+.tracker-section h2{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--blue-dark);margin-bottom:.25rem}
+.tracker-sub{font-size:12px;color:var(--muted);margin-bottom:.9rem}
+.progress-bar{height:7px;background:var(--border);border-radius:999px;margin-bottom:.35rem;overflow:hidden}
+.progress-fill{height:100%;background:var(--blue);border-radius:999px;transition:width .4s}
+.progress-label{font-size:12px;color:var(--muted);margin-bottom:.9rem}
+.tracker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:7px}
+.tracker-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:white;border:1.5px solid var(--border);border-radius:9px;font-size:12px;cursor:pointer;transition:border-color .15s}
+.tracker-item:hover{border-color:var(--blue)}
+.tracker-item input{accent-color:var(--blue);width:14px;height:14px;cursor:pointer;flex-shrink:0}
+.tracker-item.done span{text-decoration:line-through;color:var(--muted)}
+
+.ai-section{padding:0 1.5rem 2.5rem;max-width:960px;margin:0 auto}
+.ai-box{background:white;border:1.5px solid var(--border);border-radius:14px;padding:1.5rem}
+.ai-box h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--blue-dark);margin-bottom:.2rem}
+.ai-box p{font-size:12px;color:var(--muted);margin-bottom:.9rem}
+.ai-row{display:flex;gap:8px}
+.ai-row input{flex:1;padding:10px 13px;border-radius:9px;border:1.5px solid var(--border);font-size:13px;font-family:'Figtree',sans-serif;background:var(--bg);color:var(--text)}
+.ai-row input:focus{outline:none;border-color:var(--blue)}
+.ai-row button{padding:10px 16px;border-radius:9px;border:1.5px solid var(--border);background:white;font-size:13px;font-weight:500;cursor:pointer;font-family:'Figtree',sans-serif;color:var(--text)}
+.ai-row button:hover{background:var(--bg)}
+.ai-result{display:none;margin-top:.9rem;font-size:13px;line-height:1.7;padding:.9rem;background:var(--bg);border-radius:9px;border:1.5px solid var(--border)}
+.ai-result.show{display:block}
+
+.suggest-section{padding:1.5rem 1.5rem 0;max-width:960px;margin:0 auto}
+.suggest-box{background:#FFF5F8;border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem}
+.suggest-box h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--blue-dark);margin-bottom:.2rem}
+.suggest-box p{font-size:12px;color:var(--muted);margin-bottom:.9rem}
+.suggest-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.suggest-grid input{padding:9px 12px;border-radius:9px;border:1.5px solid var(--border);font-size:13px;font-family:'Figtree',sans-serif;background:white;color:var(--text)}
+.suggest-grid input:focus{outline:none;border-color:var(--blue)}
+.suggest-full{width:100%;padding:9px 12px;border-radius:9px;border:1.5px solid var(--border);font-size:13px;font-family:'Figtree',sans-serif;background:white;color:var(--text);margin-bottom:8px}
+.suggest-full:focus{outline:none;border-color:var(--blue)}
+.suggest-btn{padding:9px 20px;border-radius:9px;border:none;background:var(--blue);color:white;font-size:13px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif}
+.suggest-btn:hover{background:var(--blue-mid)}
+.suggest-success{display:none;font-size:13px;color:var(--blue-mid);font-weight:600;margin-top:8px}
+
+.retailer-section{padding:2rem 1.5rem;max-width:960px;margin:0 auto}
+.retailer-box{background:white;border:1.5px solid var(--border);border-radius:14px;padding:1.5rem}
+.retailer-header{display:flex;align-items:center;gap:10px;margin-bottom:.25rem}
+.retailer-badge{background:#FFF0F5;border:1.5px solid var(--border);border-radius:999px;padding:3px 10px;font-size:11px;font-weight:600;color:var(--blue-mid)}
+.retailer-box h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--blue-dark)}
+.retailer-box>p{font-size:13px;color:var(--muted);margin-bottom:1.1rem;line-height:1.5}
+.retailer-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.retailer-grid input,.retailer-grid select{padding:10px 12px;border-radius:9px;border:1.5px solid var(--border);font-size:13px;font-family:'Figtree',sans-serif;background:white;color:var(--text)}
+.retailer-grid input:focus,.retailer-grid select:focus{outline:none;border-color:var(--blue)}
+.retailer-full{width:100%;padding:10px 12px;border-radius:9px;border:1.5px solid var(--border);font-size:13px;font-family:'Figtree',sans-serif;background:white;color:var(--text);margin-bottom:8px}
+.retailer-full:focus{outline:none;border-color:var(--blue)}
+.retailer-note{font-size:11px;color:var(--muted);margin-bottom:10px;line-height:1.5}
+.retailer-btn{padding:10px 22px;border-radius:9px;border:none;background:var(--blue);color:white;font-size:14px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif}
+.retailer-btn:hover{background:var(--blue-mid)}
+.retailer-success{display:none;font-size:13px;color:var(--blue-mid);font-weight:600;margin-top:10px}
+
+@media(max-width:500px){
+  .suggest-grid,.retailer-grid{grid-template-columns:1fr}
+}
+
+footer{background:#2a0a14;color:#c48098;text-align:center;padding:1.5rem;font-size:12px;line-height:1.9}
+footer a{color:#e0a8bc;text-decoration:none}
+
+@media(max-width:500px){
+  .hero h1{font-size:clamp(1.4rem,4vw,2rem)}
+  .grid{grid-template-columns:1fr 1fr}
+  .email-form{flex-direction:column}
+  .hero-stats{gap:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <canvas class="hero-canvas" id="confetti"></canvas>
+  <div class="hero-pill">🎂 Updated for 2026</div>
+  <h1 style="white-space:nowrap">Happy <span>Freebie</span> Day</h1>
+  <p class="hero-sub">Because free stuff is the best gift of all.</p>
+  <div class="hero-stats">
+    <div><div class="stat-n">30+</div><div class="stat-l">freebies</div></div>
+    <div><div class="stat-n">5</div><div class="stat-l">categories</div></div>
+    <div><div class="stat-n">100%</div><div class="stat-l">free</div></div>
+  </div>
+  <div class="zip-wrap">
+    <div class="zip-label">Find freebies near you</div>
+    <div class="zip-row">
+      <input type="text" id="zipInput" maxlength="5" placeholder="Enter zip code" inputmode="numeric">
+      <button onclick="searchZip()">Search</button>
+    </div>
+    <div class="zip-status" id="zipStatus"></div>
+  </div>
+</section>
+
+<section class="how-section">
+  <h2>How it works</h2>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-num">1</div>
+      <h3>Sign up in advance</h3>
+      <p>Most freebies require a loyalty account. Sign up a few weeks before your birthday.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">2</div>
+      <h3>Show up on your birthday</h3>
+      <p>Bring your app or email confirmation. Some offers are valid all birthday month.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">3</div>
+      <h3>Claim your free stuff</h3>
+      <p>Stack as many freebies as you want — there's no limit on how many you claim.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cat-section">
+  <div class="cat-row" id="cats">
+    <button class="cat-btn active" data-cat="all">All (30)</button>
+    <button class="cat-btn" data-cat="food">Food</button>
+    <button class="cat-btn" data-cat="drink">Drinks</button>
+    <button class="cat-btn" data-cat="retail">Retail</button>
+    <button class="cat-btn" data-cat="beauty">Beauty</button>
+    <button class="cat-btn" data-cat="fun">Fun</button>
+  </div>
+</div>
+
+<div class="grid-section">
+  <div class="grid-count" id="gridCount"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="suggest-section">
+  <div class="suggest-box">
+    <h3>Know a freebie we missed? 👀</h3>
+    <p>Tell us and we'll add it to the list for everyone.</p>
+    <form name="suggest-freebie" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSuggest(event)">
+      <input type="hidden" name="form-name" value="suggest-freebie">
+      <p style="display:none"><input name="bot-field"></p>
+      <div class="suggest-grid">
+        <input type="text" name="business" placeholder="Business name" required>
+        <input type="text" name="freebie" placeholder="What's the freebie?" required>
+      </div>
+      <input class="suggest-full" type="text" name="howto" placeholder="How to claim it (app, loyalty program, etc.)">
+      <input class="suggest-full" type="email" name="email" placeholder="Your email (optional — we'll credit you)">
+      <button class="suggest-btn" type="submit">Submit tip</button>
+    </form>
+    <div class="suggest-success" id="suggestSuccess">Thanks! We'll review and add it soon. 🎉</div>
+  </div>
+</div>
+
+<section class="email-section">
+  <h2>Never miss a freebie 🎉</h2>
+  <p>Get a reminder before your birthday with the full updated list.</p>
+  <form name="happy-freebie-day" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleEmail(event)">
+    <input type="hidden" name="form-name" value="happy-freebie-day">
+    <p style="display:none"><input name="bot-field"></p>
+    <div class="email-form">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit">Get Reminders</button>
+    </div>
+  </form>
+  <div class="email-success" id="emailSuccess">You're in! We'll remind you before your birthday. 🎂</div>
+  <p class="email-fine">No spam. Just your annual birthday freebie list.</p>
+</section>
+
+<section class="tracker-section">
+  <h2>Track your claims</h2>
+  <p class="tracker-sub">Check off freebies as you grab them on your big day.</p>
+  <div class="progress-bar"><div class="progress-fill" id="pfill" style="width:0%"></div></div>
+  <div class="progress-label" id="plabel">0 of 30 claimed</div>
+  <div class="tracker-grid" id="tracker"></div>
+</section>
+
+<div class="ai-section">
+  <div class="ai-box">
+    <h3>Ask the Freebie Finder</h3>
+    <p>Try "What freebies can I use all month?" or "Best freebies for coffee lovers?"</p>
+    <div class="ai-row">
+      <input type="text" id="aiInput" placeholder="Ask about birthday freebies...">
+      <button id="aiBtn" onclick="askAI()">Ask ↗</button>
+    </div>
+    <div class="ai-result" id="aiResult"></div>
+  </div>
+</div>
+
+<section class="retailer-section">
+  <div class="retailer-box">
+    <div class="retailer-header">
+      <h2>Are you a business?</h2>
+      <span class="retailer-badge">Free listing</span>
+    </div>
+    <p>If your business offers a birthday freebie, get listed here and reach thousands of birthday celebrators looking for free stuff near them.</p>
+    <form name="retailer-submit" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleRetailer(event)">
+      <input type="hidden" name="form-name" value="retailer-submit">
+      <p style="display:none"><input name="bot-field"></p>
+      <div class="retailer-grid">
+        <input type="text" name="business" placeholder="Business name" required>
+        <input type="text" name="website" placeholder="Website URL">
+      </div>
+      <div class="retailer-grid">
+        <input type="text" name="freebie" placeholder="What's your birthday freebie?" required>
+        <select name="category">
+          <option value="" disabled selected>Category</option>
+          <option>Food</option>
+          <option>Drinks</option>
+          <option>Beauty</option>
+          <option>Retail</option>
+          <option>Fun</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <input class="retailer-full" type="text" name="howto" placeholder="How do customers claim it? (app, loyalty program, in-store, etc.)" required>
+      <div class="retailer-grid">
+        <input type="text" name="locations" placeholder="Locations (nationwide, NYC only, etc.)">
+        <input type="email" name="email" placeholder="Your email" required>
+      </div>
+      <p class="retailer-note">All submissions are reviewed before going live. We'll email you when your listing is approved. No payment required.</p>
+      <button class="retailer-btn" type="submit">Submit my business</button>
+    </form>
+    <div class="retailer-success" id="retailerSuccess">Got it! We'll review your listing and be in touch soon. 🎂</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 HappyFreebieDay.com &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#a8c0cdc4c4c7e8c0c9d8d8d1cedacdcdcac1cdccc9d186cbc7c5"><span class="__cf_email__" data-cfemail="79111c1515163911180909001f0b1c1c1b101c1d1800571a1614">[email&#160;protected]</span></a></p>
+  <p style="margin-top:.35rem">Offers change frequently. Always verify with the business before visiting. Not affiliated with any brands listed.</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const freebies=[
+  {name:"Starbucks",emoji:"☕",what:"Free drink of any size",cat:"drink",tag:"tag-drink",scope:"national",how:"Sign up for Starbucks Rewards. Free drink loads to your app on your birthday.",search:"Starbucks"},
+  {name:"Dunkin'",emoji:"🍩",what:"Free medium drink with app",cat:"drink",tag:"tag-drink",scope:"national",how:"Join Dunkin' Rewards. Drink reward appears in app on your birthday.",search:"Dunkin"},
+  {name:"Jamba Juice",emoji:"🥤",what:"Free 16oz smoothie",cat:"drink",tag:"tag-drink",scope:"national",how:"Sign up for Jamba Rewards. Free smoothie unlocks on your birthday.",search:"Jamba Juice"},
+  {name:"IHOP",emoji:"🥞",what:"Free stack of pancakes",cat:"food",tag:"tag-food",scope:"national",how:"Join MyHOP rewards. Free short stack redeemable on your birthday.",search:"IHOP"},
+  {name:"Denny's",emoji:"🍳",what:"Free Grand Slam breakfast",cat:"food",tag:"tag-food",scope:"national",how:"Sign up for Denny's Rewards. Free Grand Slam on your birthday.",search:"Denny's"},
+  {name:"Baskin-Robbins",emoji:"🍦",what:"Free 2.5oz ice cream scoop",cat:"food",tag:"tag-food",scope:"national",how:"Join BR Rewards. Free scoop redeemable on your birthday.",search:"Baskin-Robbins"},
+  {name:"Cold Stone Creamery",emoji:"🍨",what:"Free ice cream creation",cat:"food",tag:"tag-food",scope:"national",how:"Sign up for My Cold Stone Club. Email arrives with free creation offer.",search:"Cold Stone Creamery"},
+  {name:"Panera Bread",emoji:"🥐",what:"Free pastry or bakery item",cat:"food",tag:"tag-food",scope:"national",how:"Join MyPanera. Birthday reward loads to your account automatically.",search:"Panera Bread"},
+  {name:"Krispy Kreme",emoji:"🍩",what:"Free doughnut on your birthday",cat:"food",tag:"tag-food",scope:"national",how:"Sign up for Krispy Kreme Rewards. Free doughnut in store or app.",search:"Krispy Kreme"},
+  {name:"Chipotle",emoji:"🌯",what:"Free chips & guac with app",cat:"food",tag:"tag-food",scope:"national",how:"Join Chipotle Rewards. Birthday reward appears in app.",search:"Chipotle"},
+  {name:"Buffalo Wild Wings",emoji:"🍗",what:"Free appetizer with rewards",cat:"food",tag:"tag-food",scope:"national",how:"Join Blazin' Rewards. Free appetizer on your birthday month.",search:"Buffalo Wild Wings"},
+  {name:"Applebee's",emoji:"🍰",what:"Free dessert with entree",cat:"food",tag:"tag-food",scope:"national",how:"Join Applebee's email list. Birthday dessert offer emailed to you.",search:"Applebee's"},
+  {name:"Red Robin",emoji:"🍔",what:"Free Tavern Double burger",cat:"food",tag:"tag-food",scope:"national",how:"Join Red Robin Royalty. Free birthday burger loaded to your account.",search:"Red Robin"},
+  {name:"Cheesecake Factory",emoji:"🍰",what:"Free slice of cheesecake",cat:"food",tag:"tag-food",scope:"national",how:"Join their email list. Birthday offer sent to your inbox.",search:"Cheesecake Factory"},
+  {name:"P.F. Chang's",emoji:"🥡",what:"Free birthday dessert",cat:"food",tag:"tag-food",scope:"national",how:"Join Warrior Rewards. Birthday treat redeemable in restaurant.",search:"P.F. Chang's"},
+  {name:"Moe's Southwest Grill",emoji:"🌮",what:"Free burrito with rewards",cat:"food",tag:"tag-food",scope:"national",how:"Join Moe's Rewards. Free birthday burrito in app.",search:"Moe's Southwest Grill"},
+  {name:"Auntie Anne's",emoji:"🥨",what:"Free pretzel",cat:"food",tag:"tag-food",scope:"national",how:"Join Pretzel Perks. Birthday pretzel appears in your app.",search:"Auntie Anne's"},
+  {name:"Cinnabon",emoji:"🌀",what:"Free minibon",cat:"food",tag:"tag-food",scope:"national",how:"Join Cinnabon email list. Birthday reward emailed to you.",search:"Cinnabon"},
+  {name:"Marble Slab Creamery",emoji:"🍦",what:"Free ice cream with signup",cat:"food",tag:"tag-food",scope:"national",how:"Join My Sweet Rewards. Birthday offer emailed to you.",search:"Marble Slab Creamery"},
+  {name:"Fazoli's",emoji:"🍝",what:"Free meal with rewards",cat:"food",tag:"tag-food",scope:"national",how:"Join Fazoli's Rewards. Free birthday meal in app.",search:"Fazoli's"},
+  {name:"Sephora",emoji:"💄",what:"Free birthday gift in-store",cat:"beauty",tag:"tag-beauty",scope:"national",how:"Join Beauty Insider (free). Pick up your gift in-store during your birthday month.",search:"Sephora"},
+  {name:"Ulta Beauty",emoji:"💅",what:"Free birthday gift + bonus points",cat:"beauty",tag:"tag-beauty",scope:"national",how:"Join Ultamate Rewards. Gift available in-store during your birthday month.",search:"Ulta Beauty"},
+  {name:"Bath & Body Works",emoji:"🧴",what:"Free item with purchase",cat:"beauty",tag:"tag-beauty",scope:"national",how:"Join My Bath & Body Works Rewards. Offer sent by email on your birthday.",search:"Bath & Body Works"},
+  {name:"Kohl's",emoji:"🛍️",what:"$5 birthday coupon",cat:"retail",tag:"tag-retail",scope:"national",how:"Join Kohl's Rewards. $5 birthday offer emailed or in app.",search:"Kohl's"},
+  {name:"DSW",emoji:"👟",what:"$5 birthday bonus",cat:"retail",tag:"tag-retail",scope:"national",how:"Join DSW VIP. $5 birthday reward added to your account.",search:"DSW"},
+  {name:"Dave & Buster's",emoji:"🎮",what:"Free $10 power card",cat:"fun",tag:"tag-fun",scope:"national",how:"Join D&B Rewards. Free power card loaded on your birthday.",search:"Dave & Buster's"},
+  {name:"AMC Theatres",emoji:"🎬",what:"Free large popcorn",cat:"fun",tag:"tag-fun",scope:"national",how:"Join AMC Stubs. Birthday popcorn reward added to your account.",search:"AMC Theatres"},
+  {name:"Build-A-Bear",emoji:"🧸",what:"Pay your age for a bear",cat:"fun",tag:"tag-fun",scope:"national",how:"Join Count Your Candles club. Pay your age (up to $29.50) for a bear on your birthday.",search:"Build-A-Bear Workshop"},
+  {name:"Chip City",emoji:"🍪",what:"Free cookie on your birthday",cat:"food",tag:"tag-food",scope:"regional",how:"Join Chip City rewards. Free cookie redeemable on your birthday. NYC-area locations.",search:"Chip City Cookies"},
+  {name:"Insomnia Cookies",emoji:"🍪",what:"Free cookie on your birthday",cat:"food",tag:"tag-food",scope:"regional",how:"Join Insomnia Rewards. Free cookie loaded to your account on your birthday.",search:"Insomnia Cookies"},
+];
+
+let checked=JSON.parse(localStorage.getItem('hfd-checked')||'{}');
+let activeCat='all';
+let userZip='';
+
+function scopeLabel(s){return s==='national'?'Nationwide':s==='regional'?'Regional':'Local'}
+function scopeClass(s){return s==='national'?'scope-national':s==='regional'?'scope-regional':'scope-local'}
+function mapsUrl(name,zip){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(name+(zip?' near '+zip:''))}
+
+function renderGrid(){
+  const g=document.getElementById('grid');
+  let filtered=activeCat==='all'?freebies:freebies.filter(f=>f.cat===activeCat);
+  const hasZip=userZip.length===5;
+  if(!hasZip) filtered=filtered.filter(f=>f.scope==='national');
+  const hiddenCount=freebies.filter(f=>f.scope!=='national').length;
+  const countEl=document.getElementById('gridCount');
+  countEl.innerHTML=filtered.length+' freebies shown'+(hasZip?'':' &nbsp;·&nbsp; <span style="color:#D4537E;font-weight:600;cursor:pointer" onclick="document.getElementById(\'zipInput\').focus()">Enter zip to see '+hiddenCount+' regional freebies →</span>');
+  g.innerHTML=filtered.map(f=>`
+    <div class="card">
+      <div class="card-top">
+        <div class="card-emoji">${f.emoji}</div>
+        <span class="card-scope ${scopeClass(f.scope)}">${scopeLabel(f.scope)}</span>
+      </div>
+      <div class="card-name">${f.name}</div>
+      <div class="card-what">${f.what}</div>
+      <span class="card-tag ${f.tag}">${f.cat}</span>
+      <div class="card-how">${f.how}</div>
+      <a class="card-map-btn" href="${mapsUrl(f.search,userZip)}" target="_blank" rel="noopener">📍 Find near ${userZip||'me'} →</a>
+    </div>`).join('');
+}
+
+function renderTracker(){
+  const total=freebies.length;
+  const done=Object.values(checked).filter(Boolean).length;
+  document.getElementById('pfill').style.width=Math.round(done/total*100)+'%';
+  document.getElementById('plabel').textContent=done+' of '+total+' claimed';
+  document.getElementById('tracker').innerHTML=freebies.map((f,i)=>`
+    <label class="tracker-item${checked[i]?' done':''}">
+      <input type="checkbox" ${checked[i]?'checked':''} onchange="toggle(${i})">
+      <span>${f.emoji} ${f.name}</span>
+    </label>`).join('');
+}
+
+function toggle(i){
+  checked[i]=!checked[i];
+  localStorage.setItem('hfd-checked',JSON.stringify(checked));
+  renderTracker();
+}
+
+function searchZip(){
+  const z=document.getElementById('zipInput').value.trim();
+  const status=document.getElementById('zipStatus');
+  if(!/^\d{5}$/.test(z)){status.textContent='Please enter a valid 5-digit zip code.';return}
+  userZip=z;
+  status.textContent='Showing all freebies near '+z+'. Regional spots linked to Google Maps.';
+  renderGrid();
+}
+
+document.getElementById('cats').addEventListener('click',e=>{
+  const b=e.target.closest('.cat-btn');
+  if(!b)return;
+  activeCat=b.dataset.cat;
+  document.querySelectorAll('.cat-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  renderGrid();
+});
+
+document.getElementById('zipInput').addEventListener('keydown',e=>{if(e.key==='Enter')searchZip()});
+
+function handleSuggest(e){
+  e.preventDefault();
+  const form=e.target;
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+  .then(()=>{form.style.display='none';document.getElementById('suggestSuccess').style.display='block';})
+  .catch(()=>{form.style.display='none';document.getElementById('suggestSuccess').style.display='block';});
+}
+
+function handleRetailer(e){
+  e.preventDefault();
+  const form=e.target;
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+  .then(()=>{form.style.display='none';document.getElementById('retailerSuccess').style.display='block';})
+  .catch(()=>{form.style.display='none';document.getElementById('retailerSuccess').style.display='block';});
+}
+
+function handleEmail(e){
+  e.preventDefault();
+  const form=e.target;
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+  .then(()=>{form.style.display='none';document.getElementById('emailSuccess').style.display='block';})
+  .catch(()=>{form.style.display='none';document.getElementById('emailSuccess').style.display='block';});
+}
+
+async function askAI(){
+  const inp=document.getElementById('aiInput'),btn=document.getElementById('aiBtn'),res=document.getElementById('aiResult');
+  const q=inp.value.trim();if(!q)return;
+  btn.disabled=true;btn.textContent='Searching...';
+  res.className='ai-result show';res.textContent='Looking that up...';
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:'You are a Birthday Freebies expert. Give 3-5 specific, real birthday freebie recommendations based on the question. For each: brand name, exactly what they get for free, and one quick tip on how to claim it. Use bullet points. Be concise, warm, and fun. Do not make up freebies.',messages:[{role:'user',content:q}]})});
+    const d=await r.json();
+    const txt=d.content?.filter(b=>b.type==='text').map(b=>b.text).join('\n')||'No results found.';
+    res.innerHTML=txt.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<b>$1</b>');
+  }catch(e){res.textContent='Something went wrong — try again in a moment.';}
+  btn.disabled=false;btn.textContent='Ask ↗';
+}
+
+document.getElementById('aiInput').addEventListener('keydown',e=>{if(e.key==='Enter')askAI()});
+
+function handleSuggest(e){
+  e.preventDefault();
+  const form=e.target;
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+  .then(()=>{form.style.display='none';document.getElementById('suggestSuccess').style.display='block';})
+  .catch(()=>{form.style.display='none';document.getElementById('suggestSuccess').style.display='block';});
+}
+
+function handleRetailer(e){
+  e.preventDefault();
+  const form=e.target;
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+  .then(()=>{form.style.display='none';document.getElementById('retailerSuccess').style.display='block';})
+  .catch(()=>{form.style.display='none';document.getElementById('retailerSuccess').style.display='block';});
+}
+
+function spawnConfetti(){
+  const canvas=document.getElementById('confetti');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight}
+  resize();window.addEventListener('resize',resize);
+  const colors=['#F4C0D1','#FAC775','#9FE1CB','#CECBF6','#B5D4F4','#C0DD97','#F5C4B3','#378ADD'];
+  const pieces=Array.from({length:48},()=>({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*4+2,
+    c:colors[Math.floor(Math.random()*colors.length)],
+    vx:(Math.random()-.5)*.5,
+    vy:(Math.random()-.5)*.5,
+    rot:Math.random()*Math.PI*2,
+    rotV:(Math.random()-.5)*.04,
+    shape:Math.random()>.5?'circle':'rect'
+  }));
+  function loop(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+      ctx.fillStyle=p.c;ctx.globalAlpha=.35;
+      if(p.shape==='circle'){ctx.beginPath();ctx.arc(0,0,p.r,0,Math.PI*2);ctx.fill();}
+      else{ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r);}
+      ctx.restore();
+      p.x+=p.vx;p.y+=p.vy;p.rot+=p.rotV;
+      if(p.x<-10)p.x=canvas.w
