@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Freebie Day</title>
+<meta name="description" content="30+ birthday freebies near you. Free stuff from restaurants, coffee, beauty and more on your birthday.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#D4537E;--pink-light:#FFF0F5;--pink-mid:#993556;--pink-dark:#2a0a14;
+  --text:#2a0a14;--muted:#7a5060;--border:#f0d0da;--bg:#fff;
+}
+body{font-family:'Figtree',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.hero{background:#fff;border-bottom:1.5px solid var(--border);padding:2.5rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.hero canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.pill{display:inline-flex;align-items:center;gap:6px;background:white;border:1.5px solid var(--border);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--pink-mid);margin-bottom:1rem}
+h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,5vw,3.4rem);font-weight:800;line-height:1.05;color:var(--pink-dark);margin-bottom:.5rem;white-space:nowrap}
+h1 span{color:var(--pink)}
+.tagline{font-size:.95rem;color:var(--muted);margin-bottom:1.5rem}
+.stats{display:flex;gap:2rem;justify-content:center;margin-bottom:1.5rem}
+.stat-n{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--pink-dark)}
+.stat-l{font-size:11px;color:var(--muted);margin-top:1px}
+.zip-wrap{max-width:380px;margin:0 auto}
+.zip-label{font-size:12px;font-weight:600;color:var(--muted);text-align:left;margin-bottom:5px}
+.zip-row{display:flex;gap:8px}
+.zip-row input{flex:1;padding:10px 13px;border-radius:9px;border:1.5px solid var(--border);font-size:14px;font-family:'Figtree',sans-serif;color:var(--text)}
+.zip-row input:focus{outline:none;border-color:var(--pink)}
+.zip-row button{padding:10px 18px;border-radius:9px;border:none;background:var(--pink);color:white;font-size:14px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif}
+.zip-status{font-size:12px;color:var(--pink-mid);margin-top:5px;min-height:16px;text-align:left}
+.how{background:#fafafa;border-bottom:1.5px solid var(--border);padding:1.75rem 1.5rem;text-align:center}
+.how h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--pink-dark);margin-bottom:1rem}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem;max-width:650px;margin:0 auto}
+.how-step{padding:.75rem}
+.how-num{width:32px;height:32px;background:var(--pink-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;color:var(--pink-mid);margin:0 auto .5rem}
+.how-step h3{font-size:13px;font-weight:600;color:var(--pink-dark);margin-bottom:.25rem}
+.how-step p{font-size:12px;color:var(--muted);line-height:1.5}
+.cats-wrap{padding:1.25rem 1.5rem .5rem;max-width:960px;margin:0 auto}
+.cats{display:flex;flex-wrap:wrap;gap:7px}
+.cat{padding:6px 14px;border-radius:8px;border:1.5px solid var(--border);background:white;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted);font-family:'Figtree',sans-serif}
+.cat:hover{border-color:var(--pink);color:var(--pink)}
+.cat.on{background:var(--pink-light);border-color:var(--pink);color:var(--pink-mid);font-weight:600}
+.grid-wrap{padding:.75rem 1.5rem 1.5rem;max-width:960px;margin:0 auto}
+.grid-info{font-size:12px;color:var(--muted);margin-bottom:.75rem;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.card{background:white;border:1.5px solid var(--border);border-radius:13px;padding:1rem;display:flex;flex-direction:column;gap:6px;transition:border-color .2s,transform .15s}
+.card:hover{border-color:var(--pink);transform:translateY(-2px)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between}
+.card-emoji{font-size:22px;line-height:1}
+.card-scope{font-size:10px;padding:3px 7px;border-radius:5px;font-weight:600}
+.sc-nat{background:#FFF0F5;color:#993556}
+.sc-reg{background:#FFF3E0;color:#854F0B}
+.card-name{font-size:14px;font-weight:600;color:var(--pink-dark)}
+.card-what{font-size:12px;color:var(--muted);line-height:1.4}
+.card-tag{display:inline-block;font-size:10px;padding:3px 7px;border-radius:5px;font-weight:600;align-self:flex-start}
+.t-food{background:#FFF3E0;color:#854F0B}
+.t-drink{background:#FFF0F5;color:#993556}
+.t-beauty{background:#FBEAF0;color:#72243E}
+.t-retail{background:#E1F5EE;color:#085041}
+.t-fun{background:#EEEDFE;color:#3C3489}
+.card-how{font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:6px;line-height:1.4}
+.map-link{font-size:11px;color:var(--pink);font-weight:600;cursor:pointer;background:none;border:none;padding:0;font-family:'Figtree',sans-serif;text-align:left}
+.map-link:hover{text-decoration:underline}
+.suggest-wrap{padding:1rem 1.5rem;max-width:960px;margin:0 auto}
+.suggest-box{background:var(--pink-light);border:1.5px solid var(--border);border-radius:13px;padding:1.25rem}
+.suggest-box h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--pink-dark);margin-bottom:.2rem}
+.suggest-box p{font-size:12px;color:var(--muted);margin-bottom:.75rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.form-input{padding:9px 12px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-family:'Figtree',sans-serif;color:var(--text);background:white;width:100%}
+.form-input:focus{outline:none;border-color:var(--pink)}
+.form-btn{padding:9px 18px;border-radius:8px;border:none;background:var(--pink);color:white;font-size:13px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif;margin-top:4px}
+.form-success{display:none;font-size:13px;color:var(--pink-mid);font-weight:600;margin-top:8px}
+.email-wrap{background:var(--pink-light);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);padding:2rem 1.5rem;text-align:center}
+.email-wrap h2{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--pink-dark);margin-bottom:.35rem}
+.email-wrap p{font-size:.9rem;color:var(--muted);margin-bottom:1rem}
+.email-row{display:flex;gap:8px;max-width:400px;margin:0 auto;flex-wrap:wrap}
+.email-row input{flex:1;min-width:180px;padding:10px 14px;border-radius:9px;border:1.5px solid var(--border);font-size:14px;font-family:'Figtree',sans-serif;color:var(--text);background:white}
+.email-row input:focus{outline:none;border-color:var(--pink)}
+.email-row button{padding:10px 20px;border-radius:9px;border:none;background:var(--pink);color:white;font-size:14px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif}
+.email-fine{font-size:11px;color:var(--muted);margin-top:.5rem}
+.email-success{display:none;font-size:13px;color:var(--pink-mid);font-weight:600;margin-top:.5rem}
+.tracker-wrap{padding:1.5rem;max-width:960px;margin:0 auto}
+.tracker-wrap h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--pink-dark);margin-bottom:.2rem}
+.tracker-sub{font-size:12px;color:var(--muted);margin-bottom:.75rem}
+.prog-bar{height:7px;background:var(--border);border-radius:999px;margin-bottom:.3rem;overflow:hidden}
+.prog-fill{height:100%;background:var(--pink);border-radius:999px;transition:width .4s}
+.prog-label{font-size:12px;color:var(--muted);margin-bottom:.75rem}
+.tracker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px}
+.t-item{display:flex;align-items:center;gap:8px;padding:7px 11px;background:white;border:1.5px solid var(--border);border-radius:8px;font-size:12px;cursor:pointer}
+.t-item:hover{border-color:var(--pink)}
+.t-item input{accent-color:var(--pink);width:14px;height:14px;cursor:pointer;flex-shrink:0}
+.t-item.done span{text-decoration:line-through;color:var(--muted)}
+.ai-wrap{padding:0 1.5rem 1.5rem;max-width:960px;margin:0 auto}
+.ai-box{background:white;border:1.5px solid var(--border);border-radius:13px;padding:1.25rem}
+.ai-box h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--pink-dark);margin-bottom:.2rem}
+.ai-box p{font-size:12px;color:var(--muted);margin-bottom:.75rem}
+.ai-row{display:flex;gap:8px}
+.ai-row input{flex:1;padding:9px 12px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;font-family:'Figtree',sans-serif;color:var(--text);background:var(--bg)}
+.ai-row input:focus{outline:none;border-color:var(--pink)}
+.ai-row button{padding:9px 15px;border-radius:8px;border:1.5px solid var(--border);background:white;font-size:13px;font-weight:500;cursor:pointer;font-family:'Figtree',sans-serif;color:var(--text)}
+.ai-result{display:none;margin-top:.75rem;font-size:13px;line-height:1.7;padding:.75rem;background:#fafafa;border-radius:8px;border:1.5px solid var(--border)}
+.ai-result.on{display:block}
+.retailer-wrap{padding:0 1.5rem 2rem;max-width:960px;margin:0 auto}
+.retailer-box{background:white;border:1.5px solid var(--border);border-radius:13px;padding:1.5rem}
+.retailer-head{display:flex;align-items:center;gap:8px;margin-bottom:.25rem}
+.retailer-head h2{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--pink-dark)}
+.retailer-badge{background:var(--pink-light);border:1.5px solid var(--border);border-radius:999px;padding:2px 9px;font-size:11px;font-weight:600;color:var(--pink-mid)}
+.retailer-box>p{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.5}
+.retailer-note{font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.5}
+select.form-input{appearance:none}
+footer{background:var(--pink-dark);color:#c48098;text-align:center;padding:1.5rem;font-size:12px;line-height:1.9}
+@media(max-width:500px){
+  .grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .email-row{flex-direction:column}
+  h1{font-size:clamp(1.4rem,7vw,2rem)}
+}
+</style>
+</head>
+<body>
 
+<section class="hero">
+  <canvas id="cc"></canvas>
+  <div class="hero-inner">
+    <div class="pill">🎂 30+ freebies · Updated 2026</div>
+    <h1>Happy <span>Freebie</span> Day</h1>
+    <p class="tagline">Because free stuff is the best gift of all.</p>
+    <div class="stats">
+      <div><div class="stat-n">30+</div><div class="stat-l">freebies</div></div>
+      <div><div class="stat-n">5</div><div class="stat-l">categories</div></div>
+      <div><div class="stat-n">100%</div><div class="stat-l">free</div></div>
+    </div>
+    <div class="zip-wrap" style="display:none">
+      <div class="zip-label">Find freebies near you</div>
+      <div class="zip-row">
+        <input type="text" id="zipInput" maxlength="5" placeholder="Enter zip code" inputmode="numeric">
+        <button id="zipBtn">Search</button>
+      </div>
+      <div class="zip-status" id="zipStatus"></div>
+    </div>
+  </div>
+</section>
+
+<section class="how" style="display:none">
+  <h2>How it works</h2>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-num">1</div>
+      <h3>Sign up in advance</h3>
+      <p>Most freebies need a loyalty account. Sign up a few weeks before your birthday.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">2</div>
+      <h3>Show up on your birthday</h3>
+      <p>Bring your app or email confirmation. Some offers last all birthday month.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-num">3</div>
+      <h3>Claim your free stuff</h3>
+      <p>Stack as many freebies as you want — there is no limit!</p>
+    </div>
+  </div>
+</section>
+
+<div class="cats-wrap">
+  <div class="cats" id="cats">
+    <button class="cat on" data-cat="all">All</button>
+    <button class="cat" data-cat="food">Food</button>
+    <button class="cat" data-cat="drink">Drinks</button>
+    <button class="cat" data-cat="retail">Retail</button>
+    <button class="cat" data-cat="beauty">Beauty</button>
+    <button class="cat" data-cat="fun">Fun</button>
+  </div>
+</div>
+
+<div class="grid-wrap">
+  <div class="grid-info" id="gridInfo"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="suggest-wrap">
+  <div class="suggest-box">
+    <h3>Know a freebie we missed?</h3>
+    <p>Tell us and we will add it to the list for everyone.</p>
+    <form name="suggest-freebie" method="POST" data-netlify="true" id="suggestForm">
+      <input type="hidden" name="form-name" value="suggest-freebie">
+      <div class="form-row">
+        <input class="form-input" type="text" name="business" placeholder="Business name" required>
+        <input class="form-input" type="text" name="freebie" placeholder="What is the freebie?" required>
+      </div>
+      <input class="form-input" type="text" name="howto" placeholder="How to claim it" style="margin-bottom:8px">
+      <input class="form-input" type="text" name="youremail" placeholder="Your contact (optional)" style="margin-bottom:8px">
+      <br><button class="form-btn" type="submit">Submit tip</button>
+    </form>
+    <div class="form-success" id="suggestOk">Thanks! We will review and add it soon.</div>
+  </div>
+</div>
+
+<div class="email-wrap">
+  <h2>Never miss a freebie</h2>
+  <p>Get a reminder before your birthday with the full updated list.</p>
+  <form name="email-signup" method="POST" data-netlify="true" id="emailForm">
+    <input type="hidden" name="form-name" value="email-signup">
+    <div class="email-row">
+      <input type="text" name="useremail" placeholder="your email address" required>
+      <button type="submit">Get Reminders</button>
+    </div>
+  </form>
+  <div class="email-success" id="emailOk">You are in! We will remind you before your birthday.</div>
+  <p class="email-fine">No spam. Just your annual birthday freebie list.</p>
+</div>
+
+<div class="tracker-wrap">
+  <h2>Track your claims</h2>
+  <p class="tracker-sub">Check off freebies as you grab them.</p>
+  <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-label" id="progLabel">0 claimed</div>
+  <div class="tracker-grid" id="tracker"></div>
+</div>
+
+<div class="ai-wrap">
+  <div class="ai-box">
+    <h3>Ask the Freebie Finder</h3>
+    <p>Try asking: What freebies work all birthday month? or Best freebies for coffee lovers?</p>
+    <div class="ai-row">
+      <input type="text" id="aiQ" placeholder="Ask about birthday freebies...">
+      <button id="aiBtn">Ask</button>
+    </div>
+    <div class="ai-result" id="aiResult"></div>
+  </div>
+</div>
+
+<div class="retailer-wrap">
+  <div class="retailer-box">
+    <div class="retailer-head">
+      <h2>Are you a business?</h2>
+      <span class="retailer-badge">Free listing</span>
+    </div>
+    <p>Offer a birthday freebie? Get listed and reach thousands of birthday celebrators near you.</p>
+    <form name="retailer-submit" method="POST" data-netlify="true" id="retailerForm">
+      <input type="hidden" name="form-name" value="retailer-submit">
+      <div class="form-row">
+        <input class="form-input" type="text" name="bizname" placeholder="Business name" required>
+        <input class="form-input" type="text" name="website" placeholder="Website URL">
+      </div>
+      <div class="form-row">
+        <input class="form-input" type="text" name="freebie" placeholder="What is your birthday freebie?" required>
+        <select class="form-input" name="category">
+          <option value="" disabled selected>Category</option>
+          <option>Food</option><option>Drinks</option><option>Beauty</option><option>Retail</option><option>Fun</option><option>Other</option>
+        </select>
+      </div>
+      <input class="form-input" type="text" name="howto" placeholder="How do customers claim it?" required style="margin-bottom:8px">
+      <div class="form-row">
+        <input class="form-input" type="text" name="locations" placeholder="Locations (nationwide, NYC, etc.)">
+        <input class="form-input" type="text" name="contactinfo" placeholder="Your contact info" required>
+      </div>
+      <p class="retailer-note">All submissions reviewed before going live.</p>
+      <button class="form-btn" type="submit">Submit my business</button>
+    </form>
+    <div class="form-success" id="retailerOk">Got it! We will review and be in touch soon.</div>
+  </div>
+</div>
+
+<footer>
+  <p>happyfreebieday.com · 2026</p>
+  <p style="margin-top:.35rem">Offers change frequently. Verify with the business before visiting. Not affiliated with any brands listed.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
