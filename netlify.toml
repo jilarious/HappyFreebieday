@@ -1,0 +1,12 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+
+[build]
+  publish = "."
+
+[[plugins]]
+
+[dev]
+  framework = "#static"
