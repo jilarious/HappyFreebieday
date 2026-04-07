@@ -1,12 +1,19 @@
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-
 [build]
   publish = "."
 
-[[plugins]]
+[build.processing]
+  skip_processing = true
 
-[dev]
-  framework = "#static"
+[build.processing.html]
+  pretty_urls = false
+
+[build.processing.css]
+  bundle = false
+  minify = false
+
+[build.processing.js]
+  bundle = false
+  minify = false
+
+[build.processing.images]
+  compress = false

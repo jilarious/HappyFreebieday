@@ -14,8 +14,6 @@
   --text:#2a0a14;--muted:#7a5060;--border:#f0d0da;--bg:#fff;
 }
 body{font-family:'Figtree',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-
 .hero{background:#fff;border-bottom:1.5px solid var(--border);padding:2.5rem 1.5rem 2rem;text-align:center;position:relative;overflow:hidden}
 .hero canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
 .hero-inner{position:relative;z-index:1}
@@ -33,7 +31,6 @@ h1 span{color:var(--pink)}
 .zip-row input:focus{outline:none;border-color:var(--pink)}
 .zip-row button{padding:10px 18px;border-radius:9px;border:none;background:var(--pink);color:white;font-size:14px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif}
 .zip-status{font-size:12px;color:var(--pink-mid);margin-top:5px;min-height:16px;text-align:left}
-
 .how{background:#fafafa;border-bottom:1.5px solid var(--border);padding:1.75rem 1.5rem;text-align:center}
 .how h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--pink-dark);margin-bottom:1rem}
 .how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem;max-width:650px;margin:0 auto}
@@ -41,17 +38,15 @@ h1 span{color:var(--pink)}
 .how-num{width:32px;height:32px;background:var(--pink-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;color:var(--pink-mid);margin:0 auto .5rem}
 .how-step h3{font-size:13px;font-weight:600;color:var(--pink-dark);margin-bottom:.25rem}
 .how-step p{font-size:12px;color:var(--muted);line-height:1.5}
-
 .cats-wrap{padding:1.25rem 1.5rem .5rem;max-width:960px;margin:0 auto}
 .cats{display:flex;flex-wrap:wrap;gap:7px}
 .cat{padding:6px 14px;border-radius:8px;border:1.5px solid var(--border);background:white;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted);font-family:'Figtree',sans-serif}
 .cat:hover{border-color:var(--pink);color:var(--pink)}
 .cat.on{background:var(--pink-light);border-color:var(--pink);color:var(--pink-mid);font-weight:600}
-
 .grid-wrap{padding:.75rem 1.5rem 1.5rem;max-width:960px;margin:0 auto}
 .grid-info{font-size:12px;color:var(--muted);margin-bottom:.75rem;font-weight:500}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.card{background:white;border:1.5px solid var(--border);border-radius:13px;padding:1rem;display:flex;flex-direction:column;gap:6px;transition:border-color .2s,transform .15s;cursor:default}
+.card{background:white;border:1.5px solid var(--border);border-radius:13px;padding:1rem;display:flex;flex-direction:column;gap:6px;transition:border-color .2s,transform .15s}
 .card:hover{border-color:var(--pink);transform:translateY(-2px)}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between}
 .card-emoji{font-size:22px;line-height:1}
@@ -69,7 +64,6 @@ h1 span{color:var(--pink)}
 .card-how{font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:6px;line-height:1.4}
 .map-link{font-size:11px;color:var(--pink);font-weight:600;cursor:pointer;background:none;border:none;padding:0;font-family:'Figtree',sans-serif;text-align:left}
 .map-link:hover{text-decoration:underline}
-
 .suggest-wrap{padding:1rem 1.5rem;max-width:960px;margin:0 auto}
 .suggest-box{background:var(--pink-light);border:1.5px solid var(--border);border-radius:13px;padding:1.25rem}
 .suggest-box h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--pink-dark);margin-bottom:.2rem}
@@ -79,7 +73,6 @@ h1 span{color:var(--pink)}
 .form-input:focus{outline:none;border-color:var(--pink)}
 .form-btn{padding:9px 18px;border-radius:8px;border:none;background:var(--pink);color:white;font-size:13px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif;margin-top:4px}
 .form-success{display:none;font-size:13px;color:var(--pink-mid);font-weight:600;margin-top:8px}
-
 .email-wrap{background:var(--pink-light);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);padding:2rem 1.5rem;text-align:center}
 .email-wrap h2{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--pink-dark);margin-bottom:.35rem}
 .email-wrap p{font-size:.9rem;color:var(--muted);margin-bottom:1rem}
@@ -89,8 +82,7 @@ h1 span{color:var(--pink)}
 .email-row button{padding:10px 20px;border-radius:9px;border:none;background:var(--pink);color:white;font-size:14px;font-weight:600;cursor:pointer;font-family:'Figtree',sans-serif}
 .email-fine{font-size:11px;color:var(--muted);margin-top:.5rem}
 .email-success{display:none;font-size:13px;color:var(--pink-mid);font-weight:600;margin-top:.5rem}
-
-.tracker-wrap{padding:1.5rem 1.5rem;max-width:960px;margin:0 auto}
+.tracker-wrap{padding:1.5rem;max-width:960px;margin:0 auto}
 .tracker-wrap h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--pink-dark);margin-bottom:.2rem}
 .tracker-sub{font-size:12px;color:var(--muted);margin-bottom:.75rem}
 .prog-bar{height:7px;background:var(--border);border-radius:999px;margin-bottom:.3rem;overflow:hidden}
@@ -101,7 +93,6 @@ h1 span{color:var(--pink)}
 .t-item:hover{border-color:var(--pink)}
 .t-item input{accent-color:var(--pink);width:14px;height:14px;cursor:pointer;flex-shrink:0}
 .t-item.done span{text-decoration:line-through;color:var(--muted)}
-
 .ai-wrap{padding:0 1.5rem 1.5rem;max-width:960px;margin:0 auto}
 .ai-box{background:white;border:1.5px solid var(--border);border-radius:13px;padding:1.25rem}
 .ai-box h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--pink-dark);margin-bottom:.2rem}
@@ -112,7 +103,6 @@ h1 span{color:var(--pink)}
 .ai-row button{padding:9px 15px;border-radius:8px;border:1.5px solid var(--border);background:white;font-size:13px;font-weight:500;cursor:pointer;font-family:'Figtree',sans-serif;color:var(--text)}
 .ai-result{display:none;margin-top:.75rem;font-size:13px;line-height:1.7;padding:.75rem;background:#fafafa;border-radius:8px;border:1.5px solid var(--border)}
 .ai-result.on{display:block}
-
 .retailer-wrap{padding:0 1.5rem 2rem;max-width:960px;margin:0 auto}
 .retailer-box{background:white;border:1.5px solid var(--border);border-radius:13px;padding:1.5rem}
 .retailer-head{display:flex;align-items:center;gap:8px;margin-bottom:.25rem}
@@ -121,9 +111,7 @@ h1 span{color:var(--pink)}
 .retailer-box>p{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.5}
 .retailer-note{font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.5}
 select.form-input{appearance:none}
-
 footer{background:var(--pink-dark);color:#c48098;text-align:center;padding:1.5rem;font-size:12px;line-height:1.9}
-
 @media(max-width:500px){
   .grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
@@ -149,7 +137,7 @@ footer{background:var(--pink-dark);color:#c48098;text-align:center;padding:1.5re
       <div class="zip-label">Find freebies near you</div>
       <div class="zip-row">
         <input type="text" id="zipInput" maxlength="5" placeholder="Enter zip code" inputmode="numeric">
-        <button onclick="doZip()">Search</button>
+        <button id="zipBtn">Search</button>
       </div>
       <div class="zip-status" id="zipStatus"></div>
     </div>
@@ -172,14 +160,14 @@ footer{background:var(--pink-dark);color:#c48098;text-align:center;padding:1.5re
     <div class="how-step">
       <div class="how-num">3</div>
       <h3>Claim your free stuff</h3>
-      <p>Stack as many freebies as you want — there's no limit!</p>
+      <p>Stack as many freebies as you want — there is no limit!</p>
     </div>
   </div>
 </section>
 
 <div class="cats-wrap">
   <div class="cats" id="cats">
-    <button class="cat on" data-cat="all">All (28)</button>
+    <button class="cat on" data-cat="all">All</button>
     <button class="cat" data-cat="food">Food</button>
     <button class="cat" data-cat="drink">Drinks</button>
     <button class="cat" data-cat="retail">Retail</button>
@@ -195,33 +183,33 @@ footer{background:var(--pink-dark);color:#c48098;text-align:center;padding:1.5re
 
 <div class="suggest-wrap">
   <div class="suggest-box">
-    <h3>Know a freebie we missed? 👀</h3>
-    <p>Tell us and we'll add it to the list for everyone.</p>
-    <form name="suggest-freebie" method="POST" data-netlify="true" onsubmit="handleForm(event,'suggestOk')">
+    <h3>Know a freebie we missed?</h3>
+    <p>Tell us and we will add it to the list for everyone.</p>
+    <form name="suggest-freebie" method="POST" data-netlify="true" id="suggestForm">
       <input type="hidden" name="form-name" value="suggest-freebie">
       <div class="form-row">
         <input class="form-input" type="text" name="business" placeholder="Business name" required>
-        <input class="form-input" type="text" name="freebie" placeholder="What's the freebie?" required>
+        <input class="form-input" type="text" name="freebie" placeholder="What is the freebie?" required>
       </div>
       <input class="form-input" type="text" name="howto" placeholder="How to claim it" style="margin-bottom:8px">
-      <input class="form-input" type="text" name="youremail" placeholder="Your email (optional)" style="margin-bottom:8px">
+      <input class="form-input" type="text" name="youremail" placeholder="Your contact (optional)" style="margin-bottom:8px">
       <br><button class="form-btn" type="submit">Submit tip</button>
     </form>
-    <div class="form-success" id="suggestOk">Thanks! We'll review and add it soon. 🎉</div>
+    <div class="form-success" id="suggestOk">Thanks! We will review and add it soon.</div>
   </div>
 </div>
 
 <div class="email-wrap">
-  <h2>Never miss a freebie 🎉</h2>
+  <h2>Never miss a freebie</h2>
   <p>Get a reminder before your birthday with the full updated list.</p>
-  <form name="email-signup" method="POST" data-netlify="true" onsubmit="handleForm(event,'emailOk')">
+  <form name="email-signup" method="POST" data-netlify="true" id="emailForm">
     <input type="hidden" name="form-name" value="email-signup">
     <div class="email-row">
       <input type="text" name="useremail" placeholder="your email address" required>
       <button type="submit">Get Reminders</button>
     </div>
   </form>
-  <div class="email-success" id="emailOk">You're in! We'll remind you before your birthday. 🎂</div>
+  <div class="email-success" id="emailOk">You are in! We will remind you before your birthday.</div>
   <p class="email-fine">No spam. Just your annual birthday freebie list.</p>
 </div>
 
@@ -229,17 +217,17 @@ footer{background:var(--pink-dark);color:#c48098;text-align:center;padding:1.5re
   <h2>Track your claims</h2>
   <p class="tracker-sub">Check off freebies as you grab them.</p>
   <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
-  <div class="prog-label" id="progLabel">0 of 30 claimed</div>
+  <div class="prog-label" id="progLabel">0 claimed</div>
   <div class="tracker-grid" id="tracker"></div>
 </div>
 
 <div class="ai-wrap">
   <div class="ai-box">
     <h3>Ask the Freebie Finder</h3>
-    <p>Try "What freebies work all birthday month?" or "Best freebies for coffee lovers?"</p>
+    <p>Try asking: What freebies work all birthday month? or Best freebies for coffee lovers?</p>
     <div class="ai-row">
       <input type="text" id="aiQ" placeholder="Ask about birthday freebies...">
-      <button id="aiBtn" onclick="doAI()">Ask ↗</button>
+      <button id="aiBtn">Ask</button>
     </div>
     <div class="ai-result" id="aiResult"></div>
   </div>
@@ -252,14 +240,14 @@ footer{background:var(--pink-dark);color:#c48098;text-align:center;padding:1.5re
       <span class="retailer-badge">Free listing</span>
     </div>
     <p>Offer a birthday freebie? Get listed and reach thousands of birthday celebrators near you.</p>
-    <form name="retailer-submit" method="POST" data-netlify="true" onsubmit="handleForm(event,'retailerOk')">
+    <form name="retailer-submit" method="POST" data-netlify="true" id="retailerForm">
       <input type="hidden" name="form-name" value="retailer-submit">
       <div class="form-row">
         <input class="form-input" type="text" name="bizname" placeholder="Business name" required>
         <input class="form-input" type="text" name="website" placeholder="Website URL">
       </div>
       <div class="form-row">
-        <input class="form-input" type="text" name="freebie" placeholder="What's your birthday freebie?" required>
+        <input class="form-input" type="text" name="freebie" placeholder="What is your birthday freebie?" required>
         <select class="form-input" name="category">
           <option value="" disabled selected>Category</option>
           <option>Food</option><option>Drinks</option><option>Beauty</option><option>Retail</option><option>Fun</option><option>Other</option>
@@ -268,159 +256,20 @@ footer{background:var(--pink-dark);color:#c48098;text-align:center;padding:1.5re
       <input class="form-input" type="text" name="howto" placeholder="How do customers claim it?" required style="margin-bottom:8px">
       <div class="form-row">
         <input class="form-input" type="text" name="locations" placeholder="Locations (nationwide, NYC, etc.)">
-        <input class="form-input" type="text" name="contactemail" placeholder="Your contact email" required>
+        <input class="form-input" type="text" name="contactinfo" placeholder="Your contact info" required>
       </div>
-      <p class="retailer-note">All submissions reviewed before going live. We'll be in touch when approved.</p>
+      <p class="retailer-note">All submissions reviewed before going live.</p>
       <button class="form-btn" type="submit">Submit my business</button>
     </form>
-    <div class="form-success" id="retailerOk">Got it! We'll review and be in touch soon. 🎂</div>
+    <div class="form-success" id="retailerOk">Got it! We will review and be in touch soon.</div>
   </div>
 </div>
 
 <footer>
-  <p>happyfreebieday.com &nbsp;·&nbsp; 2026</p>
+  <p>happyfreebieday.com · 2026</p>
   <p style="margin-top:.35rem">Offers change frequently. Verify with the business before visiting. Not affiliated with any brands listed.</p>
 </footer>
 
-<script>
-const F=[
-  {n:"Starbucks",e:"☕",w:"Free drink of any size",c:"drink",t:"t-drink",s:"national",h:"Sign up for Starbucks Rewards. Free drink loads to your app on your birthday.",q:"Starbucks"},
-  {n:"Dunkin'",e:"🍩",w:"Free medium drink with app",c:"drink",t:"t-drink",s:"national",h:"Join Dunkin' Rewards. Drink reward appears in app on your birthday.",q:"Dunkin"},
-  {n:"Jamba Juice",e:"🥤",w:"Free 16oz smoothie",c:"drink",t:"t-drink",s:"national",h:"Sign up for Jamba Rewards. Free smoothie unlocks on your birthday.",q:"Jamba Juice"},
-  {n:"IHOP",e:"🥞",w:"Free stack of pancakes",c:"food",t:"t-food",s:"national",h:"Join MyHOP rewards. Free short stack redeemable on your birthday.",q:"IHOP"},
-  {n:"Denny's",e:"🍳",w:"Free Grand Slam breakfast",c:"food",t:"t-food",s:"national",h:"Sign up for Denny's Rewards. Free Grand Slam on your birthday.",q:"Denny's"},
-  {n:"Baskin-Robbins",e:"🍦",w:"Free 2.5oz ice cream scoop",c:"food",t:"t-food",s:"national",h:"Join BR Rewards. Free scoop redeemable on your birthday.",q:"Baskin-Robbins"},
-  {n:"Cold Stone Creamery",e:"🍨",w:"Free ice cream creation",c:"food",t:"t-food",s:"national",h:"Sign up for My Cold Stone Club. Email arrives with free creation offer.",q:"Cold Stone Creamery"},
-  {n:"Panera Bread",e:"🥐",w:"Free pastry or bakery item",c:"food",t:"t-food",s:"national",h:"Join MyPanera. Birthday reward loads to your account automatically.",q:"Panera Bread"},
-  {n:"Krispy Kreme",e:"🍩",w:"Free doughnut on your birthday",c:"food",t:"t-food",s:"national",h:"Sign up for Krispy Kreme Rewards. Free doughnut in store or app.",q:"Krispy Kreme"},
-  {n:"Chipotle",e:"🌯",w:"Free chips and guac with app",c:"food",t:"t-food",s:"national",h:"Join Chipotle Rewards. Birthday reward appears in app.",q:"Chipotle"},
-  {n:"Buffalo Wild Wings",e:"🍗",w:"Free appetizer with rewards",c:"food",t:"t-food",s:"national",h:"Join Blazin' Rewards. Free appetizer on your birthday month.",q:"Buffalo Wild Wings"},
-  {n:"Applebee's",e:"🍰",w:"Free dessert with entree",c:"food",t:"t-food",s:"national",h:"Join Applebee's email list. Birthday dessert offer emailed to you.",q:"Applebee's"},
-  {n:"Red Robin",e:"🍔",w:"Free Tavern Double burger",c:"food",t:"t-food",s:"national",h:"Join Red Robin Royalty. Free birthday burger loaded to your account.",q:"Red Robin"},
-  {n:"Cheesecake Factory",e:"🍰",w:"Free slice of cheesecake",c:"food",t:"t-food",s:"national",h:"Join their email list. Birthday offer sent to your inbox.",q:"Cheesecake Factory"},
-  {n:"Moe's Southwest Grill",e:"🌮",w:"Free burrito with rewards",c:"food",t:"t-food",s:"national",h:"Join Moe's Rewards. Free birthday burrito in app.",q:"Moe's Southwest Grill"},
-  {n:"Auntie Anne's",e:"🥨",w:"Free pretzel",c:"food",t:"t-food",s:"national",h:"Join Pretzel Perks. Birthday pretzel appears in your app.",q:"Auntie Anne's"},
-  {n:"Cinnabon",e:"🌀",w:"Free minibon",c:"food",t:"t-food",s:"national",h:"Join Cinnabon rewards. Birthday reward emailed to you.",q:"Cinnabon"},
-  {n:"Marble Slab Creamery",e:"🍦",w:"Free ice cream with signup",c:"food",t:"t-food",s:"national",h:"Join My Sweet Rewards. Birthday offer emailed to you.",q:"Marble Slab Creamery"},
-  {n:"Sephora",e:"💄",w:"Free birthday gift in-store",c:"beauty",t:"t-beauty",s:"national",h:"Join Beauty Insider (free). Pick up your gift in-store during your birthday month.",q:"Sephora"},
-  {n:"Ulta Beauty",e:"💅",w:"Free birthday gift plus bonus points",c:"beauty",t:"t-beauty",s:"national",h:"Join Ultamate Rewards. Gift available in-store during birthday month.",q:"Ulta Beauty"},
-  {n:"Bath and Body Works",e:"🧴",w:"Free item with purchase",c:"beauty",t:"t-beauty",s:"national",h:"Join My Bath and Body Works Rewards. Offer sent by email on your birthday.",q:"Bath Body Works"},
-  {n:"Kohl's",e:"🛍️",w:"$5 birthday coupon",c:"retail",t:"t-retail",s:"national",h:"Join Kohl's Rewards. $5 birthday offer emailed or in app.",q:"Kohls"},
-  {n:"DSW",e:"👟",w:"$5 birthday bonus",c:"retail",t:"t-retail",s:"national",h:"Join DSW VIP. $5 birthday reward added to your account.",q:"DSW shoe store"},
-  {n:"Dave and Busters",e:"🎮",w:"Free $10 power card",c:"fun",t:"t-fun",s:"national",h:"Join D&B Rewards. Free power card loaded on your birthday.",q:"Dave Busters"},
-  {n:"AMC Theatres",e:"🎬",w:"Free large popcorn",c:"fun",t:"t-fun",s:"national",h:"Join AMC Stubs. Birthday popcorn reward added to your account.",q:"AMC Theatres"},
-  {n:"Build-A-Bear",e:"🧸",w:"Pay your age for a bear",c:"fun",t:"t-fun",s:"national",h:"Join Count Your Candles club. Pay your age up to $29.50 for a bear on your birthday.",q:"Build A Bear Workshop"},
-  {n:"Chip City",e:"🍪",w:"Free cookie on your birthday",c:"food",t:"t-food",s:"regional",h:"Join Chip City rewards. Free cookie on your birthday. NYC-area locations.",q:"Chip City Cookies"},
-  {n:"Insomnia Cookies",e:"🍪",w:"Free cookie on your birthday",c:"food",t:"t-food",s:"regional",h:"Join Insomnia Rewards. Free cookie loaded to your account on your birthday.",q:"Insomnia Cookies"},
-];
-
-let checked=JSON.parse(localStorage.getItem('hfd2')||'{}');
-let cat='all';
-let zip='';
-
-function mapsUrl(q,z){return'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+(z?' near '+z:''))}
-function scopeLabel(s){return s==='national'?'Nationwide':'Regional'}
-function scopeClass(s){return s==='national'?'sc-nat':'sc-reg'}
-
-function renderGrid(){
-  const g=document.getElementById('grid');
-  const info=document.getElementById('gridInfo');
-  let list=cat==='all'?F:F.filter(f=>f.c===cat);
-  const hasZip=zip.length===5;
-  if(!hasZip)list=list.filter(f=>f.s==='national');
-  const hidden=F.filter(f=>f.s!=='national').length;
-  info.innerHTML=list.length+' freebies shown'+(hasZip?'':' &nbsp;·&nbsp; <span style="color:#D4537E;font-weight:600;cursor:pointer" onclick="document.getElementById(\'zipInput\').focus()">Enter zip to unlock '+hidden+' regional freebies →</span>');
-  g.innerHTML=list.map(f=>`
-    <div class="card">
-      <div class="card-top">
-        <div class="card-emoji">${f.e}</div>
-        <span class="card-scope ${scopeClass(f.s)}">${scopeLabel(f.s)}</span>
-      </div>
-      <div class="card-name">${f.n}</div>
-      <div class="card-what">${f.w}</div>
-      <span class="card-tag ${f.t}">${f.c}</span>
-      <div class="card-how">${f.h}</div>
-      <button class="map-link" onclick="window.open('${mapsUrl(f.q,zip)}','_blank')">📍 Find near ${zip||'me'} →</button>
-    </div>`).join('');
-}
-
-function renderTracker(){
-  const total=F.length;
-  const done=Object.values(checked).filter(Boolean).length;
-  document.getElementById('progFill').style.width=Math.round(done/total*100)+'%';
-  document.getElementById('progLabel').textContent=done+' of '+total+' claimed';
-  document.getElementById('tracker').innerHTML=F.map((f,i)=>`
-    <label class="t-item${checked[i]?' done':''}">
-      <input type="checkbox" ${checked[i]?'checked':''} onchange="toggle(${i})">
-      <span>${f.e} ${f.n}</span>
-    </label>`).join('');
-}
-
-function toggle(i){
-  checked[i]=!checked[i];
-  localStorage.setItem('hfd2',JSON.stringify(checked));
-  renderTracker();
-}
-
-function doZip(){
-  const z=document.getElementById('zipInput').value.trim();
-  const st=document.getElementById('zipStatus');
-  if(!/^\d{5}$/.test(z)){st.textContent='Please enter a valid 5-digit zip code.';return}
-  zip=z;
-  st.textContent='Showing all freebies near '+z+'.';
-  renderGrid();
-}
-
-document.getElementById('cats').addEventListener('click',e=>{
-  const b=e.target.closest('.cat');
-  if(!b)return;
-  cat=b.dataset.cat;
-  document.querySelectorAll('.cat').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');
-  renderGrid();
-});
-
-document.getElementById('zipInput').addEventListener('keydown',e=>{if(e.key==='Enter')doZip()});
-
-function handleForm(e,okId){
-  e.preventDefault();
-  const form=e.target;
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
-  .finally(()=>{form.style.display='none';document.getElementById(okId).style.display='block'});
-}
-
-async function doAI(){
-  const q=document.getElementById('aiQ').value.trim();
-  const btn=document.getElementById('aiBtn');
-  const res=document.getElementById('aiResult');
-  if(!q)return;
-  btn.disabled=true;btn.textContent='Searching...';
-  res.className='ai-result on';res.textContent='Looking that up...';
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:'You are a Birthday Freebies expert. Give 3-5 specific real birthday freebie recommendations. For each: brand name, what they get free, one quick tip to claim it. Bullet points. Concise and fun.',messages:[{role:'user',content:q}]})});
-    const d=await r.json();
-    const txt=d.content?.filter(b=>b.type==='text').map(b=>b.text).join('\n')||'No results found.';
-    res.innerHTML=txt.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<b>$1</b>');
-  }catch(err){res.textContent='Something went wrong — try again.';}
-  btn.disabled=false;btn.textContent='Ask ↗';
-}
-
-document.getElementById('aiQ').addEventListener('keydown',e=>{if(e.key==='Enter')doAI()});
-
-(function confetti(){
-  const c=document.getElementById('cc');
-  if(!c)return;
-  const ctx=c.getContext('2d');
-  function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight}
-  resize();window.addEventListener('resize',resize);
-  const cols=['#F4C0D1','#FAC775','#9FE1CB','#CECBF6','#F5C4B3','#C0DD97'];
-  const dots=Array.from({length:40},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3.5+1.5,col:cols[Math.floor(Math.random()*cols.length)],vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,rot:Math.random()*6.28,rv:(Math.random()-.5)*.04,sq:Math.random()>.5}));
-  function loop(){ctx.clearRect(0,0,c.width,c.height);dots.forEach(d=>{ctx.save();ctx.translate(d.x,d.y);ctx.rotate(d.rot);ctx.fillStyle=d.col;ctx.globalAlpha=.35;if(d.sq)ctx.fillRect(-d.r,-d.r/2,d.r*2,d.r);else{ctx.beginPath();ctx.arc(0,0,d.r,0,6.28);ctx.fill();}ctx.restore();d.x+=d.vx;d.y+=d.vy;d.rot+=d.rv;if(d.x<-10)d.x=c.width+10;if(d.x>c.width+10)d.x=-10;if(d.y<-10)d.y=c.height+10;if(d.y>c.height+10)d.y=-10;});requestAnimationFrame(loop)}
-  loop();
-})();
-
-renderGrid();
-renderTracker();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
